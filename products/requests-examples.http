@@ -1,0 +1,108 @@
+# примеры API-запросов
+
+#@baseUrl = http://127.0.0.1:8000/api/v1
+
+# создание продукта
+POST http://localhost:8000/api/v1/products/
+Content-Type: application/json
+
+{
+  "title": "ananas",
+  "description": "Лучшие помидоры на рынке"
+}
+
+###
+
+# получение продуктов
+GET http://localhost:8000/api/v1/products
+Content-Type: application/json
+
+###
+
+# обновление продукта
+PATCH http://localhost:8000/api/v1/products/7/
+Content-Type: application/json
+
+{
+  "description": "Самые сочные и ароматные помидорки33333"
+}
+
+###
+
+# удаление продукта
+DELETE http://localhost:8000/api/v1/products/7/
+Content-Type: application/json
+
+###
+
+# поиск продуктов по названию и описанию
+GET http://localhost:8000/api/v1/products/?search=соч
+Content-Type: application/json
+
+###
+
+# создание склада
+POST http://localhost:8000/api/v1//stocks/
+Content-Type: application/json
+
+{
+  "address": "мой bulk_create",
+  "positions": [
+    {
+      "product": 8,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 4,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
+
+###
+GET http://localhost:8000/api/v1//stocks/1/
+Content-Type: application/json
+
+
+###
+# обновляем записи на складе
+PATCH http://localhost:8000/api/v1/stocks/2/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 122220,
+      "price": 130.80
+    },
+    {
+      "product": 8,
+      "quantity": 2222243,
+      "price": 145
+    }
+  ]
+}
+
+###
+
+# поиск складов, где есть определенный продукт по id
+GET http://localhost:8000/api/v1/stocks/?products=8
+Content-Type: application/json
+
+
+###
+# поиск складов, где есть определенный продукт по части названия
+GET http://localhost:8000/api/v1/stocks/?search=ana
+Content-Type: application/json
+
+###
+# Проверка пагинации
+GET http://localhost:8000/api/v1/products?Limit=1&offset=2
+
+
+###
+# Проверка пагинации
+GET http://localhost:8000/api/v1/stocks/?page=3
