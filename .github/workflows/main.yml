@@ -1,0 +1,6 @@
+name: crud_cicd
+
+on: [ push ]
+
+jobs:
+  tests:
