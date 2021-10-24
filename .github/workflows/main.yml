@@ -2,8 +2,7 @@ name: crud_cicd
 
 on:
   push:
-    branches:
-      - ci_cd
+    branches: [ ci_cd ]
 
 jobs:
   tests:
