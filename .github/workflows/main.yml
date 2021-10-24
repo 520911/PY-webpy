@@ -19,9 +19,12 @@ jobs:
           python-version: 3.9
 
       - name: Install Req
-        run:
+        run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Flake8
+        run: flake8 .
 
       - name: Tests with pytest
         run: pytest
@@ -37,6 +40,7 @@ jobs:
 
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "cicd-crud"
           heroku_email: "denisrudakov89@gmail.com"
           usedocker: true
