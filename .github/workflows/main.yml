@@ -25,9 +25,6 @@ jobs:
           python -m pip install flake8
           python -m pip install flake8-github-actions
 
-      - name: Flake8
-        run: flake8 .
-
       - name: Tests with pytest
         run: pytest
 
