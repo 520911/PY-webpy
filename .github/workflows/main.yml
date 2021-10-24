@@ -22,6 +22,8 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          python -m pip install flake8
+          python -m pip install flake8-github-actions
 
       - name: Flake8
         run: flake8 .
