@@ -40,4 +40,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "crudcicd"
           heroku_email: "denisrudakov89@gmail.com"
-          usedocker: true
+          usedocker: false
