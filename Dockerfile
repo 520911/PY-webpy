@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.8.12
 WORKDIR /crud_create
 COPY . /crud_create
 RUN pip install -r /crud_create/requirements.txt
