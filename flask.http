@@ -1,0 +1,14 @@
+GET http://127.0.0.1:5000/users/2
+Accept: application/json
+
+###
+POST http://127.0.0.1:5000/users/
+Content-Type: application/json
+
+{
+  "username": "denis",
+  "email": "denis@denis.ru",
+  "password": "123"
+}
+
+###
