@@ -2,6 +2,7 @@ import hashlib
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from app import config
+# from passlib.apps import custom_app_context as pwd_context
 
 
 db = SQLAlchemy()
@@ -11,6 +12,9 @@ class BaseModelMixin:
 
     def add(self):
         db.session.add(self)
+        db.session.commit()
+
+    def commit(self):
         db.session.commit()
 
 
@@ -34,6 +38,12 @@ class User(db.Model, BaseModelMixin):
     def check_password(self, raw_password: str):
         raw_password = f'{raw_password}{config.SALT}'
         return self.password == hashlib.md5(raw_password.encode()).hexdigest()
+
+    # def hash_password(self, password):
+    #     self.password = pwd_context.encrypt(password)
+    #
+    # def verify_password(self, password):
+    #     return pwd_context.verify(password, self.password)
 
     def to_dict(self):
         return {
