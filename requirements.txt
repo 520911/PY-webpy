@@ -1,0 +1,5 @@
+aiohttp==3.8.0
+aiosignal==1.2.0
+aiosmtplib==1.1.6
+aiosqlite3==0.3.0
+more-itertools==8.10.0
