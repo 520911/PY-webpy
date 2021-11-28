@@ -1,6 +1,9 @@
+from celery.result import AsyncRusult
 from flask import request, jsonify
 from flask.views import MethodView
 from flask_httpauth import HTTPBasicAuth
+
+from __init__ import send_emails, celery
 from app.models import User, Adv
 
 auth = HTTPBasicAuth()
@@ -94,3 +97,17 @@ class AdvView(MethodView):
         if not user or not user.check_password(password):
             return False
         return True
+
+
+class SendMailView(MethodView):
+    def get(self, task_id):
+        task = AsyncRusult(task_id, app=celery)
+        return jsonify({
+            'status': task.status,
+            'result': task.result
+        })
+
+    def post(self):
+        emails = [*User.query.all().emails]
+        task = send_emails.delay(*emails)
+        return jsonify({'task_id': task.id})
